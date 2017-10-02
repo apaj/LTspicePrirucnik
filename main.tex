@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{textgreek}
+\usepackage{diagbox}
+\usepackage{graphicx}
+\usepackage{nicefrac}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[section]{placeins}
+
+\usepackage[unicode, pdftex, 
+	pdfauthor={Aleksandar Pajkanovic},
+    pdftitle={Hypotheses validation - research phase 1},
+	]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black, 
+    citecolor=black,		
+    breaklinks=true
+}
+
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{references.bib}
+\renewcommand\abstractname{\noindent\textbf{\textit{\small Abstract--}}}
+
+\title{
+	\LARGE Hypotheses validation \\ \smallskip
+	\normalsize A report in fulfillment of the request by Jaime Arago \\ 
+	\noindent\rule{\textwidth}{0.1pt} \\ \medskip
+	\large $\prec$ RESEARCH PHASE 1 $\succ$
+}
+
+\author{Aleksandar Pajkanovic \\
+\footnotesize \texttt{aleksandar.pajkanovic@gmail.com}}
+
+\begin{document}
+
+\maketitle
+
+\abstractname{Objective of this project is to determine advantages and disadvantages of replacing the logic gates by matrices in digital electric circuits. The research to achieve this goal is divided in two phases. Purpose of this document, representing research phase 1, is to present a short review of the provided literature and data; and to propose the means to achieve the objective of the project. The review part of this document is planned as the confirmation that the ideas and requests are clearly understood. In the proposal part, software tools and models critical to the implementation of research phase 2 are discussed. A document, being a report on research phase 2, is to follow as soon as this report is approved and proposed circuits are implemented in simulations.}
+
+\section{Introduction}
+\label{intro}
+
+In~\cite{Arago:2012} encoding data using light components in higher orders than binary and processing it using truth tables larger than Boolean one is proposed. Here, two concepts are important as improvements of logic circuits synthesis. First, at the transistor level, the basic light component is a general-purpose optical transistor, also dubbed a refracting light transistor (RLT). Based on this device, main light computing units are developed, such as: counting, distribution, storage, logic gates, and arithmetic-logic unit, which are all RTL units implemented at the transistor level, i.e. a circuit schematic for each of the units is provided. However, all of these are still implemented at a very high level of abstraction, as both the RLT and opto-mechanical elements (prisms and mirrors) are assumed ideal, without actually being fabricated nor any electromagnetic (EM) field simulations were provided.
+
+The actual realization of a light switching component is a part of a more general concept, known as optical computing. The main idea is to have a component with an input and an output beam of light, where the output beam is controlled by the input beam. The primary issue in such a component fabrication is the nature of light itself; namely, the light actually represents an EM wave, in vacuum or in air, there is no interacting between two beams of light. However, in a material of a nonlinear refractive index, \textit{n}, a light beam of sufficient strength changes the optical properties of that material; thus, influencing any other beam of light entering (and exiting) the material. 
+
+Even though there have been recent advances in this area of research,~\cite{Piggott:2015}--\cite{Jain:2017}, the actual optical computing is still not commercialized. The optics is  used for the data transfer, whereas the computing (data processing) is still done by electrical signals within electric circuits~\cite{Intel:2016}. Consequently, signal conversions from electrical to optical and vice versa represent a bottleneck from the aspect of speed and an issue when power consumption is concerned~\cite{Piggott:2015}.
+
+Within this document, the accent is, however, at the second of the concepts presented in~\cite{Arago:2012}; namely, the RTL units designed within that paper are implemented in a way that enables higher orders of data encoding than binary. As the order is actually arbitrary, this approach is named \textbf{\textit{multinary}} - even though within the paper the examples are implemented as using the base of ten. In other words, just as there are two levels of voltage in binary (base 2) logic circuits, there are ten levels in (base 10) logic circuits. The multinary approach, theoretically, has been known as long as  long as the binary approach. Due to practical reasons (including noise, ease of implementation, algebra simplicity, etc.), however, until now it has not been commercialized as ubiquitously as the binary approach.
+
+\section{Hypotheses}
+\label{hypo}
+
+\noindent \textbf{Hypothesis 1} -- replacing the logic gates synthesized using the standard CMOS technology design approach to digital circuits by the MOSFET matrices decreases the number of transistors, energy consumption and power dissipation.
+
+\smallskip
+
+\noindent \textbf{Hypothesis 2} -- the digital data encoded by \textit{n}-valued logic (where $n>2$) is processed with greater speed by a logic module designed based on hypothesis 1, than the binary data is processed by CMOS logic circuits.
+
+
+\section{Questions}
+\label{qs}
+
+Some clarifications would be considered very useful at this point. The questions must take a direct tone, unusual for this kind of a document, but this will be reserved for this section only. This in the interest of absolute understanding of the ideas, so I hope you will understand.
+
+\begin{enumerate}
+\item Are you, and to what extent, familiar with the following:
+\begin{itemize}
+\item concept of CMOS technology synthesis of logic gates?
+\item field-programmable gate arrays (FPGA)?
+\item hardware design languages (HDL)?
+\item pass-transistor logic (PTL)?
+\end{itemize} 
+\item What do you mean by "\textit{...SW binaries...}"?
+\item What is the ground for your disagreement with the claim that "\textit{no optical switching mechanism can match the speed of its electronic homologue}"?
+\item If I am correct to conclude from your e-mails that you yourself did not perform any electrical simulations of schematics you sent me, based on what calculations do you claim that the energy consumed and heat (power dissipation) is reduced by the implementation of hypothesis 1? The simple proportional calculation shown in the accompanying document titled ``\textit{Hypothesis validation}'', where 234 MOSFETs consume 6.9 ``energy units" and 129 MOSFETs consume 3.7 ``energy units", only because:
+\begin{equation}
+3.7 = \frac{6.9}{\nicefrac{234}{129}}
+\end{equation}
+is not a good enough analytic model. Could you, please, provide any other calculation performed, if at all?
+\item Have you considered noise, matching or temperature issues when designing the approach?
+\item Has the clock signal been considered and at which frequencies would you expect the designs to perform? In other words, what would you expect the length of one cycle to be?
+\item At what supply voltage do you expect the circuits to be operated?
+\item Is there any particular reason why the depletion MOSFETs are utilized in the design?
+\item The only commercially available technology process that would allow physical implementation of the proposed circuits is CMOS. Have you considered any of the technology nodes (e.g. 0.35 \textmugreek, 130 nm, 45 nm, etc.)?
+\item Is there any particular application that these circuits are intended for?
+\end{enumerate}
+
+\section{Implementation proposal}
+\label{proposal}
+
+The implementation is proposed to consist of three steps, as follows.
+
+First, a mathematical proof is required. For example, the power consumption of a CMOS pair, in general, and assuming several approximations (which are not as correct as they used to be back in the days of larger transistors), given consists of switching and short-circuit dissipation~\cite{Sedra:2010}. The former used to be absolutely dominant, but in recent technology nodes, especially with the scaling of the threshold voltage their influence is equally important. However, for the purposes of this research, it would be enough to limit the considerations to the switching dissipation given by:
+\begin{equation}
+P = C_L V_{DD}^2f,
+\label{Equ:psw}
+\end{equation}
+where $C_L$ represents the output capacitance, $V_{DD}$ is the supply voltage and $f$ is the switching frequency. Of course, if sub-threshold operation is to be considered, then a more complex analytic model would have to be used~\cite{Dokic:2016}. Without including values of supply voltage and switching frequency and without at least an estimate of output capacitance, not even an educated guess to the actual power consumption of the circuit is possible.
+
+To determine any of these parameters, a technology node needs to be chosen first. If you have no preference I would advise to start with a 0.35 \textmugreek m process. It is a mature technology, models are very well tested and widely available, it is still alive and cheap enough to fabricate a prototype if decided later on. Of course, at the simulation level, it would be best to compare it wit at least one more, more advanced, node, say \mbox{45 nm}.
+
+Once the CMOS node is selected and if the analytic calculations confirm energy savings, the next phase would be to implement the proposed matrices in simulation software. If you have no preference, I would strongly advise \textit{ngspice}~\cite{ngspice:2017}. Of course, it is possible to do the simulation using the industry standard tools and models, but we would need to discuss such a radical step in a direct conversation.
+
+These two steps would be something similar to what was presented in~\cite{Pajkanovic:2012}. Also, this paper might be interesting as there the basic principles of PTL are described.
+
+The final, third, step would be the characterization of a fabricated prototype. This, of course, makes sense only if the simulation results from the second step confirm the successfulness of the hypotheses. There are means of low-cost silicon fabrication, and I will gladly discuss these possibilities once we get there and if you express interest.
+
+\section{(A kind of) Conclusion}
+
+The ideas behind hypotheses are valid, no argument there. However, without a more comprehensive analytic analysis (which would take into account transistor geometry, threshold voltage, power supply, output capacitance, etc.) it is not possible to claim improvements as compared to standard CMOS design paradigm. That would have to be confirmed by software simulation. Then, in second iteration, more specific points are to be discussed - temperature, matching, technology issues and, the most important for multinary implementations, noise. There are three fundamental sources of noise in transistors (thermal, shot and flicker~\cite{Schneider:2010}) and all of them are important and must be taken into account. Only after such profound analysis is performed and energy savings assumptions are confirmed, only then real, grounded conclusions can be presented.
+
+For the second phase of research, the proposal is to:
+\begin{enumerate}
+\item you provide the answers to questions raised in section~\ref{qs};
+\item based on those answers I will have a complete overview of the situation, and then we will determine the technology nodes and supply voltages range;
+\item I will perform the initial calculations and implement simulations based on your schematics and parameters of technology along the simulations of the standard CMOS circuits; namely, just as you provided the comparison in the \textit{Hypothesis validation} document, we need to provide the comparison in simulation;
+\item in the report of the second phase simulation results will be presented, compared and discussed. At that point, you will decide whether to go for the third phase, repeat the second phase, change it or whatever you believe is best.
+\end{enumerate}
+
+% notes
+% Prashant Jain on optical transistors https://www.extremetech.com/extreme/223671-heres-why-we-dont-have-light-based-computing-just-yet
+
+% Jelena Vuckovic http://news.stanford.edu/2015/05/28/switch-light-based-052715/
+
+% Spectrum Bandwidth problem http://spectrum.ieee.org/computing/hardware/multicore-is-bad-news-for-supercomputers a ima malo i ovdje o tome: http://rebelscience.blogspot.ba/2009/01/parallel-computing-fourth-crisis-part-i.html
+
+% speed of light https://www.technologyreview.com/s/420082/computing-at-the-speed-of-light/#comments
+
+
+
+\printbibliography 
+\end{document}
