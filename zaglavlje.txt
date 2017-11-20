@@ -1,0 +1,31 @@
+\documentclass[12pt]{report}
+%\usepackage[utf8]{inputenc}
+\usepackage[serbianc]{babel}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{textgreek}
+\usepackage{subcaption}
+\usepackage{diagbox}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{nicefrac}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\usepackage[unicode, pdftex, 
+	pdfauthor={Katedra za elektroniku, ETF UBL RS},
+    pdftitle={LTSpice XVII},
+	]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue, 
+    citecolor=black,		
+    breaklinks=true
+}
+
+\newcommand{\figwidth}{1}
+
+%\usepackage[backend=biber,style=ieee]{biblatex}
+%\addbibresource{references.bib}
+\renewcommand\abstract{\noindent\textbf{\textit{\small Садржај--}}}
+\usepackage[labelsep=period]{caption}
