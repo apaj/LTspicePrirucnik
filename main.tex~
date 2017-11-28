@@ -574,7 +574,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=\figwidth\textwidth]{figs/rc-symbol6.PNG}
-\caption{Инстанцирање креираног симбола}
+\caption{Поставка за снимање струјно-напонске зависности диоде}
 \label{Fig:rc-symbol6}
 \end{figure}
 
@@ -587,7 +587,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=\figwidth\textwidth]{figs/rc-symbol7.PNG}
-\caption{Тестно коло: побуда, инстанциран симбол, тип симулације и добијени резултати}
+\caption{Поставка за снимање струјно-напонске зависности диоде}
 \label{Fig:rc-symbol7}
 \end{figure}
 
